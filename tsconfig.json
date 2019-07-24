@@ -1,0 +1,27 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "outDir": "./dist",
+        "baseUrl": "./app",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "typeRoots": ["node_modules/@types"],
+        "types": ["reflect-metadata"],
+        "module": "commonjs",
+        "lib": ["es2017", "dom","es6"],
+
+    },
+    "include": [
+        "app" 
+    ],
+    "exclude": [
+        "node_modules",
+        "frontend"
+    ],
+
+
+}
