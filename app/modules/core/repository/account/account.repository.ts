@@ -5,26 +5,15 @@ import {
 import { Request, Response } from 'express';
 import { from, Observable } from 'rxjs';
 import { AccountModel } from '../../model';
+import { AccountContract, IAccount } from 'modules/core/contract/account.contrat';
 
 
-export class AccountRepository {
+class AccountRepository {
     public route: RoutePathService = routerPathService;
 
-    async create(req: Request): Promise<any> {
-        try {
-            const Account = new AccountModel(req.body);
-
-            return await Account.save()
-                .then(record => {
-                    return { status: 200, record };
-                })
-                .catch(error => {
-                    return { status: 500, error };
-                })
-
-        } catch (e) {
-            console.log('Error ao processar a operação: ', e);
-        }
+    async create(data: IAccount): Promise<AccountContract> {
+        const Account = await new AccountModel(data);
+        return await Account.save();
     }
 
     async  update(req: Request): Promise<any> {
@@ -106,4 +95,4 @@ export class AccountRepository {
     }
 }
 
-export default new AccountRepository();
+export const Account = new AccountRepository();

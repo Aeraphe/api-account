@@ -18,18 +18,14 @@ export class UserRepository {
      * @memberof UserRepository
      * @return
      */
-    create(req: Request, res: Response): Observable<any> {
-        const newUser: IUserModel = new User(req.body);
-        return from(
-            newUser
-                .save()
-                .then(user => {
-                    return { status: 200, user };
-                })
-                .catch(error => {
-                    return { status: 500, error };
-                })
-        );
+    async create(req: Request, res: Response) {
+        try {
+            const UserModel: IUserModel = await new User(req.body);
+            return await UserModel.save()
+        } catch (error) {
+            console.log('Não foi possivel criar o usuário', error);
+        }
+
     }
     /**
      * Find user by e-mail
