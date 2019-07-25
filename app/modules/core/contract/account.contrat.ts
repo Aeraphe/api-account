@@ -5,10 +5,12 @@ import { CompanyContract } from './company.contract';
 
 
 
-export interface AccountContract extends Document {
+export interface IAccount {
 
-    owner: { _id: string, name: string },
-    company: CompanyContract,
+    owner: { _id: any, name: string },
+    company?: CompanyContract,
     service?: [{ name: string, api: ApiServiceContract }],
 
 }
+
+export interface AccountContract extends IAccount, Document { }
