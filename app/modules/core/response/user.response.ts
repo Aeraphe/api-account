@@ -16,7 +16,7 @@ export class UserResponse extends AeroResponse {
             return {
                 message: 'Usuário cadastrado com sucesso!!!',
                 status: data.status,
-                data: [data],
+                data: [data.data],
                 url: this.route.getRoute(req)
             };
         } catch (err) {
