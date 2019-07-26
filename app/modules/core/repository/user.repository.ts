@@ -4,8 +4,9 @@ import {
     RoutePathService,
     routerPathService
 } from '../../../shared/services/route-path.service';
-import { IUserModel } from '../contract/user.model.inderface';
+
 import { from, Observable } from 'rxjs';
+import { UserDocument } from '../contract/document';
 
 export class UserRepository {
     public route: RoutePathService = routerPathService;
@@ -20,7 +21,7 @@ export class UserRepository {
      */
     async create(req: Request, res: Response) {
         try {
-            const UserModel: IUserModel = await new User(req.body);
+            const UserModel: UserDocument = await new User(req.body);
             return await UserModel.save()
         } catch (error) {
             console.log('Não foi possivel criar o usuário', error);
@@ -33,7 +34,7 @@ export class UserRepository {
      * @param res
      */
 
-    findByEmail(email: String): Observable<IUserModel> {
+    findByEmail(email: String): Observable<UserDocument> {
         return from(
             User.findOne({ email })
                 .then(user => {

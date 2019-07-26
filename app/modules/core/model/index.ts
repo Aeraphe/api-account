@@ -9,10 +9,9 @@ import { AccountHasUserContract } from '../contract/account-has-user.contract';
 import { AccountHasUserSchema } from './account-has-user.schema';
 import { ApiServiceTypeContract } from '../contract/api-service-type.contract';
 import { ApiServiceTypeSchema } from './api-service-type.schema';
-import { AccountContract } from '../contract/account.contrat';
 import { CompanySchema } from './company.schema';
-import { IUserModel } from '../contract/user.model.inderface';
 import { UserSchema } from './user.schema';
+import { UserDocument, AccountDcoument } from '../contract/document';
 
 
 export const AccountConfirmationModel: Model<AccountConfirmationContract> = model<AccountConfirmationContract>(
@@ -25,7 +24,7 @@ export const childrenApiServiceModel: Model<ApiServiceContract> = model<ApiServi
     childrenApiServiceSchema
 );
 
-export const AccountModel: Model<AccountContract> = model<AccountContract>(
+export const AccountModel: Model<AccountDcoument> = model<AccountDcoument>(
     'accounts',
     AccountSchema
 );
@@ -45,7 +44,7 @@ export const Company: Model<CompanyContract> = model<CompanyContract>(
     CompanySchema
 );
 
-export const User: Model<IUserModel> = model<IUserModel>(
+export const User: Model<UserDocument> = model<UserDocument>(
     'users',
     UserSchema
 );

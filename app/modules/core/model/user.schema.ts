@@ -1,6 +1,4 @@
-import { Schema, Model } from 'mongoose';
-import * as mongoose from 'mongoose';
-import { IUserModel } from '../contract/user.model.inderface';
+import { Schema } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 
 

@@ -2,7 +2,7 @@ import { Response, Request } from 'express';
 import * as passport from 'passport';
 import * as jwt from 'jsonwebtoken';
 import LoginResponse from '../response/login.response';
-import { IUserModel } from '../contract/user.model.inderface';
+import { UserDocument } from '../contract/document';
 
 export class LoginController {
     /**
@@ -14,7 +14,7 @@ export class LoginController {
         passport.authenticate(
             'local',
             { session: false },
-            (err, user: IUserModel, info) => {
+            (err, user: UserDocument, info) => {
                 let status;
                 let token;
                 if (err || !user) {

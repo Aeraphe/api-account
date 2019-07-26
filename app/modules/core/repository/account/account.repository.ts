@@ -5,13 +5,14 @@ import {
 import { Request, Response } from 'express';
 import { from, Observable } from 'rxjs';
 import { AccountModel } from '../../model';
-import { AccountContract, IAccount } from 'modules/core/contract/account.contrat';
+import { AccountContract } from 'modules/core/contract/account.contract';
+import { AccountDcoument } from 'modules/core/contract/document';
 
 
 class AccountRepository {
     public route: RoutePathService = routerPathService;
 
-    async create(data: IAccount): Promise<AccountContract> {
+    async create(data: AccountContract): Promise<AccountDcoument> {
         const Account = await new AccountModel(data);
         return await Account.save();
     }
