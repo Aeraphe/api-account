@@ -10,7 +10,7 @@ COPY   package.json  $HOME/api-account/
 
 WORKDIR $HOME/api-account
 
-RUN npm i mongoose-data-seed
+RUN npm install -g mongo-seeding-cli
 
 RUN npm install
 
