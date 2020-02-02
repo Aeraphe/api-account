@@ -10,8 +10,6 @@ COPY   package.json  $HOME/api-account/
 
 WORKDIR $HOME/api-account
 
-RUN npm install -g mongo-seeding-cli
-
 RUN npm install
 
 RUN npm shrinkwrap
