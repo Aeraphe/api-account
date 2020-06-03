@@ -4,7 +4,7 @@ import {Document} from 'mongoose';
 /**
  * One company can have many stores
  */
-export interface StoreHasUserContract extends Document{
+export interface StoreContract extends Document{
 
     company_id:string,
     name:string,
