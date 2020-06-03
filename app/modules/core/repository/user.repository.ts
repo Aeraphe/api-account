@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { User } from '../model';
+import { UserModel } from '../model';
 import {
     RoutePathService,
     routerPathService
@@ -21,8 +21,8 @@ export class UserRepository {
      */
     async create(req: Request, res: Response) {
         try {
-            const UserModel: UserContract =  new User(req.body);
-            return await UserModel.save()
+            const User: UserContract =  new UserModel(req.body);
+            return await User.save()
         } catch (error) {
             console.log('Não foi possivel criar o usuário', error);
         }
@@ -36,7 +36,7 @@ export class UserRepository {
 
     findByEmail(email: String): Observable<UserContract> {
         return from(
-            User.findOne({ email })
+            UserModel.findOne({ email })
                 .then(user => {
                     return user;
                 })
@@ -48,7 +48,7 @@ export class UserRepository {
 
     async getUser(req: Request, res: Response) {
         const id = req.params.userId;
-        await User.findById(id, (err, user) => {
+        await UserModel.findById(id, (err, user) => {
             if (err) {
                 return res.status(500).json({
                     error: 'Não foi possível localizar o usuário',
@@ -65,7 +65,7 @@ export class UserRepository {
     }
 
     async getAllUser(req: Request, res: Response) {
-        await User.find({}, (err, user) => {
+        await UserModel.find({}, (err, user) => {
             if (err) {
                 return res.status(500).json({
                     error: 'Não foi possível localizar',

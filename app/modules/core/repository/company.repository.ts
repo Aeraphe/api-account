@@ -1,4 +1,4 @@
-import { Company } from '../model';
+import { CompanyModel } from '../model';
 import {
     RoutePathService,
     routerPathService
@@ -12,9 +12,9 @@ export class CompanyRepository {
 
     create(req: Request): Observable<any> {
         try {
-            const newCompany = new Company(req.body);
+            const Company = new CompanyModel(req.body);
             return from(
-                newCompany
+                Company
                     .save()
                     .then(company => {
                         return { status: 200, company };
@@ -31,7 +31,7 @@ export class CompanyRepository {
     update(req): Observable<any> {
         try {
             return from(
-                Company.findOneAndUpdate(
+                CompanyModel.findOneAndUpdate(
                     { _id: req.params.id },
                     { $set: req.body },
                     { new: true }
@@ -54,7 +54,7 @@ export class CompanyRepository {
     updateAddress(req): Observable<any> {
         try {
             return from(
-                Company.findOneAndUpdate(
+                CompanyModel.findOneAndUpdate(
                     { _id: req.params.companyId, 'address._id': req.params.addressId },
                     { $set: req.body },
                     { new: true }
@@ -77,7 +77,7 @@ export class CompanyRepository {
     updatePhones(req): Observable<any> {
         try {
             return from(
-                Company.findOneAndUpdate(
+                CompanyModel.findOneAndUpdate(
                     { _id: req.params.companyId, 'phones._id': req.params.phonesId },
                     { $set: req.body },
                     { new: true }
@@ -99,7 +99,7 @@ export class CompanyRepository {
             const id: any = req.params.id;
 
             return from(
-                Company.findOne({ _id: id })
+                CompanyModel.findOne({ _id: id })
                     .then(company => {
                         return { status: 200, company };
                     })
@@ -113,7 +113,7 @@ export class CompanyRepository {
     }
 
     async getAll(req: Request, res: Response) {
-        Company.find({}, (err, company) => {
+        CompanyModel.find({}, (err, company) => {
             if (err) {
                 return res.status(404).json({
                     message: 'Não foi possível efetuar a operação',

@@ -1,5 +1,4 @@
-import { Model, Schema } from 'mongoose';
-import { CompanyContract } from '../contract/company.contract';
+import {  Schema } from 'mongoose';
 import * as mongoose from 'mongoose';
 
 const CompanyAdressSchema: Schema = new Schema({
