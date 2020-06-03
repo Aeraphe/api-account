@@ -8,6 +8,7 @@ export const UserSchema: Schema = new Schema({
         required: 'Favor digitar seu nome'
     },
     email: { type: String, required: 'Email' },
+    isChecked:{type:Boolean,default:true},
     password: String,
     address: [
         {

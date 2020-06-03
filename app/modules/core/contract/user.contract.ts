@@ -1,4 +1,6 @@
-export interface UserContract  {
+import {Document} from 'mongoose';
+
+export interface UserContract extends Document  {
     name: string;
     email: string;
     password: string;
