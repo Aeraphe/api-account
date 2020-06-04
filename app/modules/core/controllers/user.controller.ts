@@ -2,8 +2,7 @@ import { Response, Request } from 'express';
 import User from '../repository/user.repository';
 import * as bcrypt from 'bcrypt';
 import UserResponse from '../response/user.response';
-import { Account } from '../repository/account/account.repository';
-import { AccountContract } from '../contract/account.contract';
+
 
 
 
@@ -20,13 +19,10 @@ export class UserController {
             const saltRounds = 10;
             req.body.password = await bcrypt.hash(req.body.password, saltRounds);
             const user = await User.create(req, res);
-            let data: AccountContract = {
-                owner: { _id: user._id, name: user.name }
-            };
-            const account = await Account.create(data);
+           
             return res.status(200).json(UserResponse.create(req, {
                 status: 200,
-                data: { user: user, account: account }
+                data: { user: user }
             }));
 
         } catch (error) {
@@ -34,7 +30,7 @@ export class UserController {
         }
 
     }
-
+    
     /**
      *
      *
