@@ -1,5 +1,5 @@
 import { Strategy } from 'passport-local';
-import { User } from '../modules/core/model';
+import { UserModel } from '../modules/core/model';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 require('dotenv').config({ debug: process.env.DEBUG });
 
@@ -9,7 +9,7 @@ export const LoginStrategy = new Strategy(
         passwordField: 'password'
     },
     (email, password, done) => {
-        User.findOne({ email: email, trash: 0 }, function (err, user) {
+        UserModel.findOne({ email: email, trash: 0 }, function (err, user) {
             if (err) {
                 return done(err);
             }
