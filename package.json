@@ -12,7 +12,7 @@
   "scripts": {
     "build": "tsc -w",
     "dev": " nodemon --watch ./dist/     ./dist/server.js  ",
-    "start": "concurrently --kill-others \"npm:build\" \"npm:dev\" "
+    "start": "concurrently  --kill-others \"npm:build\" \"npm:dev\" "
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -28,11 +28,11 @@
     "@types/passport-jwt": "^3.0.1",
     "@types/passport-local": "^1.0.33",
     "@types/socket.io": "^2.1.2",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "nodemon": "^1.19.1",
-    "ts-node": "^8.3.0",
-    "tsc-watch": "^2.2.1",
-    "typescript": "^3.5.3"
+    "ts-node": "^8.10.2",
+    "tsc-watch": "^4.2.8",
+    "typescript": "^3.9.3"
   },
   "dependencies": {
     "@types/nodemailer": "^6.2.1",

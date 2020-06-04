@@ -13,10 +13,11 @@
         "types": ["reflect-metadata"],
         "module": "commonjs",
         "lib": ["es2017", "dom","es6"],
+        "watch": true
 
     },
     "include": [
-        "app" 
+        "app/**/*.ts" 
     ],
     "exclude": [
         "node_modules",
